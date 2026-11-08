@@ -1,0 +1,1152 @@
+{
+  "seed": 20261108,
+  "python": "3.14.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "java": "openjdk version \"25.0.1\" 2025-10-21\nOpenJDK Runtime Environment (build 25.0.1+8-27)\nOpenJDK 64-Bit Server VM (build 25.0.1+8-27, mixed mode, sharing)",
+  "scope": "Java process startup, JSON transport and algorithm; 20-second timeout per batch",
+  "fixture_results": [
+    {
+      "name": "lcs-both-empty",
+      "input": {
+        "task": "lcs",
+        "a": "",
+        "b": ""
+      },
+      "expected": {
+        "length": 0
+      },
+      "actual": {
+        "length": 0,
+        "sequence": ""
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "lcs-right-empty",
+      "input": {
+        "task": "lcs",
+        "a": "ABC",
+        "b": ""
+      },
+      "expected": {
+        "length": 0
+      },
+      "actual": {
+        "length": 0,
+        "sequence": ""
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "lcs-noncontiguous",
+      "input": {
+        "task": "lcs",
+        "a": "a!b!c!d",
+        "b": "abcd"
+      },
+      "expected": {
+        "length": 4
+      },
+      "actual": {
+        "length": 4,
+        "sequence": "abcd"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "lcs-multiple-optima",
+      "input": {
+        "task": "lcs",
+        "a": "ABAB",
+        "b": "BABA"
+      },
+      "expected": {
+        "length": 3
+      },
+      "actual": {
+        "length": 3,
+        "sequence": "ABA"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "merge-empty",
+      "input": {
+        "task": "merge",
+        "sizes": []
+      },
+      "expected": {
+        "cost": 0
+      },
+      "actual": {
+        "plan": [],
+        "cost": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "merge-single",
+      "input": {
+        "task": "merge",
+        "sizes": [
+          1000000000
+        ]
+      },
+      "expected": {
+        "cost": 0
+      },
+      "actual": {
+        "plan": [],
+        "cost": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "merge-adjacency",
+      "input": {
+        "task": "merge",
+        "sizes": [
+          1,
+          100,
+          1
+        ]
+      },
+      "expected": {
+        "cost": 203
+      },
+      "actual": {
+        "plan": [
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "cost": 203
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "merge-zero-ties",
+      "input": {
+        "task": "merge",
+        "sizes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "cost": 0
+      },
+      "actual": {
+        "plan": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ],
+        "cost": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "merge-long-total",
+      "input": {
+        "task": "merge",
+        "sizes": [
+          1000000000,
+          1000000000,
+          1000000000,
+          1000000000
+        ]
+      },
+      "expected": {
+        "cost": 8000000000
+      },
+      "actual": {
+        "plan": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            3
+          ]
+        ],
+        "cost": 8000000000
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "tree-empty",
+      "input": {
+        "task": "tree",
+        "n": 0,
+        "weights": [],
+        "edges": []
+      },
+      "expected": {
+        "weight": 0
+      },
+      "actual": {
+        "selected": [],
+        "weight": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "tree-negative",
+      "input": {
+        "task": "tree",
+        "n": 3,
+        "weights": [
+          -1,
+          -2,
+          -3
+        ],
+        "edges": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      "expected": {
+        "weight": 0
+      },
+      "actual": {
+        "selected": [],
+        "weight": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "tree-zero-ties",
+      "input": {
+        "task": "tree",
+        "n": 3,
+        "weights": [
+          0,
+          0,
+          0
+        ],
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "expected": {
+        "weight": 0
+      },
+      "actual": {
+        "selected": [],
+        "weight": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "tree-long-total",
+      "input": {
+        "task": "tree",
+        "n": 5,
+        "weights": [
+          1000000000,
+          1000000000,
+          1000000000,
+          1000000000,
+          1000000000
+        ],
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": {
+        "weight": 3000000000
+      },
+      "actual": {
+        "selected": [
+          0,
+          2,
+          4
+        ],
+        "weight": 3000000000
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "naive-empty",
+      "input": {
+        "task": "naive",
+        "text": "",
+        "pattern": ""
+      },
+      "expected": {
+        "positions": [
+          0
+        ]
+      },
+      "actual": {
+        "positions": [
+          0
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "kmp-empty",
+      "input": {
+        "task": "kmp",
+        "text": " !~",
+        "pattern": ""
+      },
+      "expected": {
+        "positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "rk-empty",
+      "input": {
+        "task": "rk",
+        "text": "",
+        "pattern": ""
+      },
+      "expected": {
+        "positions": [
+          0
+        ]
+      },
+      "actual": {
+        "positions": [
+          0
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "naive-longer",
+      "input": {
+        "task": "naive",
+        "text": "ab",
+        "pattern": "abc"
+      },
+      "expected": {
+        "positions": []
+      },
+      "actual": {
+        "positions": []
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "kmp-longer",
+      "input": {
+        "task": "kmp",
+        "text": "",
+        "pattern": "abc"
+      },
+      "expected": {
+        "positions": []
+      },
+      "actual": {
+        "positions": []
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "rk-longer",
+      "input": {
+        "task": "rk",
+        "text": "ab",
+        "pattern": "abc"
+      },
+      "expected": {
+        "positions": []
+      },
+      "actual": {
+        "positions": []
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "naive-overlap",
+      "input": {
+        "task": "naive",
+        "text": "aaaaaa",
+        "pattern": "aaa"
+      },
+      "expected": {
+        "positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "kmp-overlap",
+      "input": {
+        "task": "kmp",
+        "text": "ababababa",
+        "pattern": "ababa"
+      },
+      "expected": {
+        "positions": [
+          0,
+          2,
+          4
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          2,
+          4
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "rk-overlap",
+      "input": {
+        "task": "rk",
+        "text": "aaaaaa",
+        "pattern": "aaa"
+      },
+      "expected": {
+        "positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "naive-punctuation",
+      "input": {
+        "task": "naive",
+        "text": "~ A! ~ a! ~ A!",
+        "pattern": "~ A!"
+      },
+      "expected": {
+        "positions": [
+          0,
+          10
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          10
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "kmp-punctuation",
+      "input": {
+        "task": "kmp",
+        "text": "~ A! ~ a! ~ A!",
+        "pattern": "~ A!"
+      },
+      "expected": {
+        "positions": [
+          0,
+          10
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          10
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "rk-punctuation",
+      "input": {
+        "task": "rk",
+        "text": "~ A! ~ a! ~ A!",
+        "pattern": "~ A!"
+      },
+      "expected": {
+        "positions": [
+          0,
+          10
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          10
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "rk-collision-rejection",
+      "input": {
+        "task": "rk",
+        "text": "abdjab",
+        "pattern": "ab"
+      },
+      "expected": {
+        "positions": [
+          0,
+          4
+        ]
+      },
+      "actual": {
+        "positions": [
+          0,
+          4
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "rk-negative-remainder",
+      "input": {
+        "task": "rk",
+        "text": "zabcabc",
+        "pattern": "abc"
+      },
+      "expected": {
+        "positions": [
+          1,
+          4
+        ]
+      },
+      "actual": {
+        "positions": [
+          1,
+          4
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "suffix-empty",
+      "input": {
+        "task": "suffix",
+        "text": ""
+      },
+      "expected": {
+        "sa": [],
+        "lcp": [],
+        "repeated": ""
+      },
+      "actual": {
+        "sa": [],
+        "repeated": "",
+        "lcp": []
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "suffix-ascii-min",
+      "input": {
+        "task": "suffix",
+        "text": " "
+      },
+      "expected": {
+        "sa": [
+          0
+        ],
+        "lcp": [
+          0
+        ],
+        "repeated": ""
+      },
+      "actual": {
+        "sa": [
+          0
+        ],
+        "repeated": "",
+        "lcp": [
+          0
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "suffix-all-distinct",
+      "input": {
+        "task": "suffix",
+        "text": "~! A"
+      },
+      "expected": {
+        "sa": [
+          2,
+          1,
+          3,
+          0
+        ],
+        "lcp": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "repeated": ""
+      },
+      "actual": {
+        "sa": [
+          2,
+          1,
+          3,
+          0
+        ],
+        "repeated": "",
+        "lcp": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "suffix-overlap",
+      "input": {
+        "task": "suffix",
+        "text": "aaaaa"
+      },
+      "expected": {
+        "sa": [
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "lcp": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "repeated": "aaaa"
+      },
+      "actual": {
+        "sa": [
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "repeated": "aaaa",
+        "lcp": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "suffix-tied-repeat",
+      "input": {
+        "task": "suffix",
+        "text": "abXabYcdZcd"
+      },
+      "expected": {
+        "sa": [
+          2,
+          5,
+          8,
+          0,
+          3,
+          1,
+          4,
+          9,
+          6,
+          10,
+          7
+        ],
+        "lcp": [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          2,
+          0,
+          1
+        ],
+        "repeated": "ab"
+      },
+      "actual": {
+        "sa": [
+          2,
+          5,
+          8,
+          0,
+          3,
+          1,
+          4,
+          9,
+          6,
+          10,
+          7
+        ],
+        "repeated": "ab",
+        "lcp": [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          2,
+          0,
+          1
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "aho-empty-dictionary",
+      "input": {
+        "task": "aho",
+        "patterns": [],
+        "texts": [
+          "",
+          "abc",
+          ""
+        ]
+      },
+      "expected": {
+        "counts": [
+          [],
+          [],
+          []
+        ]
+      },
+      "actual": {
+        "counts": [
+          [],
+          [],
+          []
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "aho-no-texts",
+      "input": {
+        "task": "aho",
+        "patterns": [
+          "a"
+        ],
+        "texts": []
+      },
+      "expected": {
+        "counts": []
+      },
+      "actual": {
+        "counts": []
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "aho-suffix-duplicates-reset",
+      "input": {
+        "task": "aho",
+        "patterns": [
+          "he",
+          "she",
+          "e",
+          "he"
+        ],
+        "texts": [
+          "sheshe",
+          "",
+          "sheshe"
+        ]
+      },
+      "expected": {
+        "counts": [
+          [
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            2,
+            2,
+            2
+          ]
+        ]
+      },
+      "actual": {
+        "counts": [
+          [
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            2,
+            2,
+            2
+          ]
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "aho-overlap-chain",
+      "input": {
+        "task": "aho",
+        "patterns": [
+          "aaa",
+          "a",
+          "aa",
+          "aaa"
+        ],
+        "texts": [
+          "aaaaa"
+        ]
+      },
+      "expected": {
+        "counts": [
+          [
+            3,
+            5,
+            4,
+            3
+          ]
+        ]
+      },
+      "actual": {
+        "counts": [
+          [
+            3,
+            5,
+            4,
+            3
+          ]
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "aho-printable-boundaries",
+      "input": {
+        "task": "aho",
+        "patterns": [
+          " ",
+          "~",
+          " ~",
+          "~ "
+        ],
+        "texts": [
+          " ~ ~ "
+        ]
+      },
+      "expected": {
+        "counts": [
+          [
+            3,
+            2,
+            2,
+            2
+          ]
+        ]
+      },
+      "actual": {
+        "counts": [
+          [
+            3,
+            2,
+            2,
+            2
+          ]
+        ]
+      },
+      "status": "PASS"
+    }
+  ],
+  "batches": [
+    {
+      "name": "named boundary fixtures",
+      "cases": 37,
+      "seconds": 0.146086,
+      "status": "PASS"
+    },
+    {
+      "name": "independent small oracles",
+      "cases": 860,
+      "seconds": 0.207334,
+      "status": "PASS"
+    },
+    {
+      "name": "repeated mixed state reset",
+      "cases": 351,
+      "seconds": 0.16571,
+      "status": "PASS"
+    },
+    {
+      "name": "lcs-million-cells-tie",
+      "cases": 1,
+      "seconds": 1.454416,
+      "status": "PASS"
+    },
+    {
+      "name": "lcs-max-identical-ascii",
+      "cases": 1,
+      "seconds": 0.571583,
+      "status": "PASS"
+    },
+    {
+      "name": "merge-200-billion-blocks",
+      "cases": 1,
+      "seconds": 0.246796,
+      "status": "PASS"
+    },
+    {
+      "name": "merge-200-zero-blocks",
+      "cases": 1,
+      "seconds": 0.2395,
+      "status": "PASS"
+    },
+    {
+      "name": "tree-100000-chain",
+      "cases": 1,
+      "seconds": 0.646721,
+      "status": "PASS"
+    },
+    {
+      "name": "tree-100000-star",
+      "cases": 1,
+      "seconds": 0.580737,
+      "status": "PASS"
+    },
+    {
+      "name": "tree-100000-negative-chain",
+      "cases": 1,
+      "seconds": 0.512,
+      "status": "PASS"
+    },
+    {
+      "name": "naive-max-overlap",
+      "cases": 1,
+      "seconds": 0.148814,
+      "status": "PASS"
+    },
+    {
+      "name": "naive-max-late-mismatch",
+      "cases": 1,
+      "seconds": 0.148607,
+      "status": "PASS"
+    },
+    {
+      "name": "naive-max-empty-pattern",
+      "cases": 1,
+      "seconds": 0.133862,
+      "status": "PASS"
+    },
+    {
+      "name": "kmp-max-overlap",
+      "cases": 1,
+      "seconds": 0.311181,
+      "status": "PASS"
+    },
+    {
+      "name": "kmp-max-late-mismatch",
+      "cases": 1,
+      "seconds": 0.199382,
+      "status": "PASS"
+    },
+    {
+      "name": "kmp-max-empty-pattern",
+      "cases": 1,
+      "seconds": 0.299204,
+      "status": "PASS"
+    },
+    {
+      "name": "rk-product-limit-overlap",
+      "cases": 1,
+      "seconds": 0.214397,
+      "status": "PASS"
+    },
+    {
+      "name": "rk-longer-pattern-limit",
+      "cases": 1,
+      "seconds": 0.118208,
+      "status": "PASS"
+    },
+    {
+      "name": "rk-max-empty-pattern",
+      "cases": 1,
+      "seconds": 0.133332,
+      "status": "PASS"
+    },
+    {
+      "name": "suffix-50000-identical",
+      "cases": 1,
+      "seconds": 0.266016,
+      "status": "PASS"
+    },
+    {
+      "name": "suffix-50000-periodic",
+      "cases": 1,
+      "seconds": 0.295419,
+      "status": "PASS"
+    },
+    {
+      "name": "aho-100001-states",
+      "cases": 1,
+      "seconds": 0.736569,
+      "status": "PASS"
+    },
+    {
+      "name": "aho-million-output-counts",
+      "cases": 1,
+      "seconds": 1.066094,
+      "status": "PASS"
+    },
+    {
+      "name": "aho-dense-suffix-chain",
+      "cases": 1,
+      "seconds": 0.601285,
+      "status": "PASS"
+    },
+    {
+      "name": "aho-wide-alphabet-trie",
+      "cases": 1,
+      "seconds": 1.255046,
+      "status": "PASS"
+    },
+    {
+      "name": "aho-empty-dictionary-max-texts",
+      "cases": 1,
+      "seconds": 0.467814,
+      "status": "PASS"
+    }
+  ],
+  "total_cases": 1271,
+  "by_task": {
+    "aho": 126,
+    "kmp": 205,
+    "lcs": 128,
+    "merge": 116,
+    "naive": 214,
+    "rk": 225,
+    "suffix": 149,
+    "tree": 108
+  },
+  "status": "PASS"
+}

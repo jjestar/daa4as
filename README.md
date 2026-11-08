@@ -4,7 +4,29 @@
 
 **Course:** Design and Analysis of Algorithms. **Practical:** 50 points. **Defence:** 50 points. **Availability:** 29 October–8 November 2026, 23:59, for both practical work and defence; Moodle records approved extensions.
 
-Implement six parts with eight commands: LCS; ordered adjacent-block merging; maximum-weight independent set on a tree; naive, KMP and exact Rabin–Karp search; suffix array with Kasai LCP; Aho–Corasick. The work covers syllabus weeks 8–10. This is a starter template: the algorithm methods are TODOs. Read the specification before coding.
+This repository implements six parts with eight commands: LCS; ordered adjacent-block merging; maximum-weight independent set on a tree; naive, KMP and exact Rabin–Karp search; suffix array with Kasai LCP; Aho–Corasick. The selected submission language is **Java 17+**. The work covers syllabus weeks 8–10.
+
+## Run this implementation
+
+With Python 3.12+ and JDK 17+ on `PATH`, run from the repository root:
+
+```sh
+python tools/run.py --setup
+python tools/run.py --check
+python tests/student/run_tests.py
+python tools/run.py --input examples/lcs.jsonl
+```
+
+The eight handlers are implemented in [Java/source](Java/source). [ANALYSIS.md](ANALYSIS.md) explains the algorithms, correctness, reconstruction, complexity and measured search comparison. [Student tests](tests/student/README.md) include independent small-input oracles, boundary cases and full-domain checks; recorded results are in [results.json](tests/student/results.json). The other language directories retain the original template and are not the selected submission.
+
+To reproduce the direct-call search comparison after building Java:
+
+```sh
+javac --release 17 -encoding UTF-8 -cp Java/build -d Java/build tests/student/SearchBenchmark.java
+java -Xmx384m -Xbatch -cp Java/build SearchBenchmark
+```
+
+For submission, use language **Java** and the full commit URL of the checked revision, as described below.
 
 ## Create your repository
 
